@@ -11,8 +11,8 @@ fun getResult(line: String): Int {
     val sep = if (isPartTwo) "|" else ""
     var firstNum = "($target$sep\\d)".toRegex().find(line)?.groupValues?.get(0)
     var secondNum = "(${target.reversed()}$sep\\d)".toRegex().find(line.reversed())?.groupValues?.get(0)?.reversed()
-    if (firstNum in digits) firstNum = digits.getOrDefault(firstNum, "")
-    if (secondNum in digits) secondNum = digits.getOrDefault(secondNum, "")
+    if (firstNum in digits) firstNum = digits.getOrDefault(firstNum!!, "")
+    if (secondNum in digits) secondNum = digits.getOrDefault(secondNum!!, "")
     return (firstNum + secondNum).toInt()
 }
 
