@@ -12,10 +12,13 @@ import kotlin.math.sqrt
 
 const val isPartTwo = true
 
+fun bd(value: Double): BigDecimal = BigDecimal.valueOf(value)
+
 fun quadForm(time: BigDecimal, dist: BigDecimal, isNeg: Boolean): BigDecimal {
-    val a = -BigDecimal.ONE
+    val a = -bd(1.0)
     val mc = MathContext(100)
-    return (-time + (if (isNeg) -BigDecimal.ONE else BigDecimal.ONE) * (time.pow(2) - BigDecimal.valueOf(4).multiply(a).multiply(-dist)).sqrt(mc)) / (BigDecimal.valueOf(2)*a)
+    return (-time + (if (isNeg) -bd(1.0) else BigDecimal.ONE) *
+            (time.pow(2) - bd(4.0).multiply(a).multiply(-dist)).sqrt(mc)) / (bd(2.0)*a)
 }
 
 fun main() {
@@ -37,11 +40,11 @@ fun main() {
         }
     }
 
-    var product = BigDecimal.ONE
+    var product = bd(1.0)
     for (i in times.indices) {
-        val lowerBound = (quadForm(times[i], distances[i], false) + BigDecimal.valueOf(0.01)).setScale(0, RoundingMode.UP).round(MathContext(10))
-        val upperBound = (quadForm(times[i], distances[i], true) - BigDecimal.valueOf(0.01)).setScale(0, RoundingMode.DOWN).round(MathContext(10))
-        product *= (upperBound - lowerBound + BigDecimal.ONE)
+        val lowerBound = (quadForm(times[i], distances[i], false) + bd(0.01)).setScale(0, RoundingMode.UP).round(MathContext(10))
+        val upperBound = (quadForm(times[i], distances[i], true) - bd(0.01)).setScale(0, RoundingMode.DOWN).round(MathContext(10))
+        product *= (upperBound - lowerBound + bd(1.0))
     }
     println(product)
 }
