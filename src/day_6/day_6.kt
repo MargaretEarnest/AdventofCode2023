@@ -2,13 +2,8 @@ package day_6
 
 import java.io.File
 import java.math.BigDecimal
-import java.math.BigInteger
 import java.math.MathContext
 import java.math.RoundingMode
-import kotlin.math.ceil
-import kotlin.math.floor
-import kotlin.math.pow
-import kotlin.math.sqrt
 
 const val isPartTwo = true
 
