@@ -30,6 +30,5 @@ fun main() {
       datasets.add(mutableListOf(line.split(" ").map { it.toInt() }.toMutableList()))
     }
     for (i in datasets.indices) extrapolate(i)
-    datasets.forEach { println(it) }
     println(datasets.sumOf { if (isPartTwo) it[0].first() else it[0].last() })
 }
